@@ -1,0 +1,26 @@
+name: "application-example"
+tenant: "example-company"
+
+containers:
+  default:
+    name: "ghcr.io/ertia-io/images/my-project"
+    containerFile: "../Dockerfile"
+    buildContext: "../."
+    pullSecretName: "apps-registry-credential"
+
+flux:
+  name: "ghcr.io/ertia-io/flux/my-project"
+  pullSecretName: "apps-registry-credential"
+
+helm:
+  name: "ghcr.io/ertia-io/charts/my-project"
+  chartPath: "./helm/application-example"
+  valuesFile: "./helm/values.yaml"
+  pullSecretName: "apps-registry-credential"
+  image:
+    repositoryPath: "image.repository"
+    tagPath: "image.tag"
+    pullSecretsPath: "imagePullSecrets"
+  environments:
+    test:
+      valuesFile: "./values-test.yaml"
