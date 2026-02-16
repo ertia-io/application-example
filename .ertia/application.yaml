@@ -3,17 +3,17 @@ tenant: "example-company"
 
 containers:
   default:
-    name: "ghcr.io/ertia-io/images/my-project"
+    name: "ghcr.io/ertia-io/images/application-example"
     containerFile: "../Dockerfile"
     buildContext: "../."
     pullSecretName: "apps-registry-credential"
 
 flux:
-  name: "ghcr.io/ertia-io/flux/my-project"
+  name: "ghcr.io/ertia-io/flux/application-example"
   pullSecretName: "apps-registry-credential"
 
 helm:
-  name: "ghcr.io/ertia-io/charts/my-project"
+  name: "ghcr.io/ertia-io/charts/application-example"
   chartPath: "./helm/application-example"
   valuesFile: "./helm/values.yaml"
   pullSecretName: "apps-registry-credential"
