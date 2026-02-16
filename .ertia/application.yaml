@@ -15,7 +15,7 @@ flux:
 helm:
   name: "ghcr.io/ertia-io/charts/application-example"
   chartPath: "./helm/application-example"
-  valuesFile: "./helm/values.yaml"
+  valuesFile: "./helm/application-example/values.yaml"
   pullSecretName: "apps-registry-credential"
   image:
     repositoryPath: "image.repository"
