@@ -1,0 +1,13 @@
+ingress:
+  enabled: true
+  annotations:
+    ingress.kubernetes.io/ssl-redirect: "true"
+  # Force SSO login (Enfore authenticated access through Zitadel)
+  #  nginx.ingress.kubernetes.io/auth-url: "https://auth-proxy.${FLUX_DEFAULT_INGRESS_DOMAIN}/oauth2/auth"
+  #  nginx.ingress.kubernetes.io/auth-signin: "https://auth-proxy.${FLUX_DEFAULT_INGRESS_DOMAIN}/oauth2/start?rd=https://$host$uri"
+  className: "${FLUX_DEFAULT_INGRESS_CLASS}"
+  hosts:
+    - host: "application-example.apps.${FLUX_DEFAULT_INGRESS_DOMAIN}"
+      paths:
+        - path: /
+          pathType: Prefix
