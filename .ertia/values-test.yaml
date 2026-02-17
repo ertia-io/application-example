@@ -1,3 +1,6 @@
+livenessProbe: null
+readinessProbe: null
+
 service:
   port: 8080
 
