@@ -8,6 +8,12 @@ containers:
     buildContext: "../."
     pullSecretName: "apps-registry-credential"
 
+databases:
+  db:
+    type: postgres
+    environments:
+      test: {}
+
 flux:
   name: "ghcr.io/ertia-io/flux/application-example"
   pullSecretName: "apps-registry-credential"
