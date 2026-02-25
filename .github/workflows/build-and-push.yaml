@@ -5,6 +5,8 @@ on:
   push:
     branches:
       - '**'
+    tags:
+      - '*'
 
 jobs:
   build-push:
@@ -24,10 +26,17 @@ jobs:
 
       - name: Setup Ertia CLI
         run: |
-          curl -o- https://ertia.io/install.sh | bash
+          curl -fsSL https://ertia.io/install.sh | bash
 
-      - name: Build application
+      - name: Build application (branch)
+        if: ${{ github.ref_type == 'branch' }}
         run: ertia app build
+
+      - name: Build application (tag)
+        if: ${{ github.ref_type == 'tag' }}
+        env:
+          tag: ${{ github.ref_name }}"
+        run: ertia app build --tag=$tag
 
       - name: Deploy to test
         if: github.ref == 'refs/heads/main'
