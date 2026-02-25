@@ -35,7 +35,7 @@ jobs:
       - name: Build application (tag)
         if: ${{ github.ref_type == 'tag' }}
         env:
-          tag: ${{ github.ref_name }}"
+          tag: ${{ github.ref_name }}
         run: ertia app build --tag=$tag
 
       - name: Deploy to test
